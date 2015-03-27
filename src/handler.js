@@ -24,11 +24,13 @@ module.exports = function(handlerPath, fixturePath, proxyquire, callback) {
     module = require('proxyquire')(handlerPath, proxyquire);
   } else {
     module = require(handlerPath);
+    delete(require.cache[handlerPath + '.js']);
   }
   // load event
   var event = {Records: []};
   if (fixturePath) {
     event = require(fixturePath);
+    delete(require.cache[fixturePath + '.js']);
   }
   // create callback as beforeEach
   if (typeof(callback) === 'function') {
