@@ -1,12 +1,16 @@
 language: node_js
 node_js:
-  - '0.10'
-  - '0.11'
+- '0.10'
 branches:
   only:
-    - master
+  - master
 before_install:
-  - npm install -g grunt-cli
-  - npm install
+- npm install -g grunt-cli
+- npm install
 script:
-  - npm test
+- npm test
+env:
+  global:
+  - secure: Ht5iPzRwwu5CDqvVKnBLypTkMbCN3PhYkhTj6zS9GUFIx4QiCTj1VV/nxGxpAV7DqEqjztURHMtRcfCi9dSQ/HrgGTQav2H9rCVGdAZveZVkJbSfD7o3eCe5qoIuuT+54an1diTR/9KLXdEQBxMgFMbCgQbcX6HgNt2cZeNZOOo=
+  - secure: Wewtfo2jkN2WgBfO/kpPGE3NuSLPsalGIJVPd3XII8sHQTT4xlyjmI/HwIc4Scf/pIu0atYTNecLeDJ9t1jwU5aLyekESJJ1dw8oDx1foSanDYHuWTps+4KRr5mwCibJjBY7xzRr2HNrmVF7MhQ0xohHM2wvk8Y+ZWETE0pePv8=
+  - secure: BpNh8fzlclcXgtAa7KSA5aTxiA8Hgc9d54d+BQMQ81SHVO2O5G84e0ZRxpPB97ZG0wAfioJS5zw3tfFLRnA3iehl7BYspUfRKNnWkrkPdWuBSvRakK2yEV0EHTn3od9b2SNfZIv/6TIpKw/rcOg+e2QhTBnQbe9SB34dYndyPek=

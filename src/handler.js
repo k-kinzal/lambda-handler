@@ -26,23 +26,19 @@ module.exports = function(handlerPath, fixturePath, proxyquire, callback) {
     module = require(handlerPath);
     delete(require.cache[handlerPath + '.js']);
   }
-  // load event
+  // create event
   var event = {Records: []};
   if (fixturePath) {
     event = require(fixturePath);
     delete(require.cache[fixturePath + '.js']);
   }
+  // create context
+  var context = require('./context');
   // create callback as beforeEach
   if (typeof(callback) === 'function') {
     var handler = module.handler;
     module.handler = function() {
-      callback(handler, event, {
-        done: function(err, message) {
-          if (err) {
-            console.log('Error ' + err);
-          }
-        }
-      });
+      callback(handler, event, context);
     };
   }
 
