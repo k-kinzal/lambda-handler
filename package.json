@@ -20,7 +20,7 @@
     "jshint-stylish": "^1.0.0",
     "mocha": "^2.2.4",
     "node-zip": "^1.1.0",
-    "power-assert": "^0.10.2",
+    "power-assert": "^0.11.0",
     "uuid": "^2.0.1"
   },
   "dependencies": {
