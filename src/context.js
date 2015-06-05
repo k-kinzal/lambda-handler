@@ -16,10 +16,11 @@ module.exports = {
 
     try {
       if (typeof(result) === 'function') {
-        throw new TypeError('Process exited before completing request');
+        this._payload = '';
+      } else {
+        this._payload = JSON.stringify(this._payload);
       }
-      console.log('result: ' + JSON.stringify(result));
-      this._payload = JSON.stringify(result);
+      console.log('result: ' + this._payload);
 
     } catch(err) {
       var type = err.name;
