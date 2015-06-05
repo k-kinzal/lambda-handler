@@ -1,6 +1,8 @@
 lambda-handler
 ==============
 
+[![Build Status](https://travis-ci.org/k-kinzal/lambda-handler.svg?branch=master)](https://travis-ci.org/k-kinzal/lambda-handler)
+
 Factory for create AWS Lambda handler.
 
 ## Get started
