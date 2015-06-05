@@ -4,7 +4,8 @@
   "description": "Factory for create AWS Lambda handler.",
   "main": "src/handler.js",
   "scripts": {
-    "test": "mocha --require intelli-espower-loader test/*.spec.js"
+    "test": "mocha --require intelli-espower-loader test/*.spec.js",
+    "simple-test": "mocha --require intelli-espower-loader test/handler.spec.js"
   },
   "author": "k-kinzal",
   "license": "MIT",
