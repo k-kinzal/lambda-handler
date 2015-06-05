@@ -29,9 +29,6 @@ describe('Lambda context object:', function() {
       if (t && ~t.indexOf('%')) {
         process.stdout.write(util.format.apply(util, arguments) + '\n');
       }
-      if (t.match(/^.+?-.+?-.+?-.+?/)) { // debug
-        process.stdout.write(t + '\n');
-      }
     };
   });
   afterEach(function() {
@@ -62,6 +59,9 @@ describe('Lambda context object:', function() {
       assert.ok(payload1 === payload2);
     });
     λ('context.succeed(new Function());', function(payload1, payload2) {
+      assert.ok(payload1 === payload2);
+    });
+    λ('context.succeed(new Function("var foo = 1;"));', function(payload1, payload2) {
       assert.ok(payload1 === payload2);
     });
     λ('context.succeed(new Error("hogehoge"));', function(payload1, payload2) {

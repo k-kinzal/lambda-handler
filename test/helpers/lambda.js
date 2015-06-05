@@ -35,7 +35,6 @@ module.exports = function λ(fnString, callback) {
     };
     return lambda.invokePromise(params);
   }).then(function(data) {
-    console.info(funcName, data.Payload);
     payload = data.Payload;
 
   }).catch(function(err) {
