@@ -19,21 +19,8 @@ describe('Lambda context object:', function() {
   var context;
   beforeEach(function() {
     context = require('../src/context');
+    context.enableLog = true;
     delete(require.cache[path.resolve('../src/context.js')]);
-  });
-  var log, warn;
-  beforeEach(function() {
-    log = console.log;
-    warn = console.warn;
-    console.log = console.warn = function(t) {
-      if (t && ~t.indexOf('%')) {
-        process.stdout.write(util.format.apply(util, arguments) + '\n');
-      }
-    };
-  });
-  afterEach(function() {
-    console.log = log;
-    console.warn = warn;
   });
 
   describe('should local context and remote context matches', function() {

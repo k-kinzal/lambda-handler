@@ -5,9 +5,10 @@ module.exports = {
   awsRequestId: '',
   invokeid: '',
   logStreamName: '',
+  enableLog: true,
   succeed: function(result) {
     if (arguments.length > 1) {
-      console.warn("function succeed expected at most 1 arguments, got " + arguments.length);
+      this.enableLog && console.warn("function succeed expected at most 1 arguments, got " + arguments.length);
     }
 
     if(isUndefined(result)) {
@@ -20,12 +21,12 @@ module.exports = {
       } else {
         this._payload = JSON.stringify(this._payload);
       }
-      console.log('result: ' + this._payload);
+      this.enableLog && console.log('result: ' + this._payload);
 
     } catch(err) {
       var type = err.name;
       var message = err.message;
-      console.log("Unable to stringify body as json: " + message);
+      this.enableLog && console.log("Unable to stringify body as json: " + message);
 
       this._payload = JSON.stringify({
         "errorMessage": message,
@@ -35,7 +36,7 @@ module.exports = {
   },
   fail: function(error) {
     if (arguments.length > 1) {
-      console.warn("function fail expected at most 1 arguments, got " + arguments.length);
+      this.enableLog && console.warn("function fail expected at most 1 arguments, got " + arguments.length);
     }
 
     var errorObject;
@@ -60,12 +61,12 @@ module.exports = {
         };
       }
     }
-    console.log('result: ' + JSON.stringify(errorObject));
+    this.enableLog && console.log('result: ' + JSON.stringify(errorObject));
     this._payload = JSON.stringify(errorObject);
   },
   done: function() {
     if (arguments.length > 1) {
-      console.warn("function fail expected at most 2 arguments, got " + arguments.length);
+      this.enableLog && console.warn("function fail expected at most 2 arguments, got " + arguments.length);
     }
     if(isUndefinedOrNull(arguments[0]) && isUndefinedOrNull(arguments[1])) {
       this.succeed();
@@ -75,7 +76,7 @@ module.exports = {
       this.fail(arguments[0]);
     } else {
       //support backwards compatibility by logging message here
-      console.log("Error Message: " + arguments[1]);
+      this.enableLog && console.log("Error Message: " + arguments[1]);
       this.fail(arguments[0]);
     }
   }
