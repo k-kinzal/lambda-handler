@@ -19,7 +19,7 @@ module.exports = {
       if (typeof(result) === 'function') {
         this._payload = '';
       } else {
-        this._payload = JSON.stringify(this._payload);
+        this._payload = JSON.stringify(result);
       }
       this.enableLog && console.log('result: ' + this._payload);
 

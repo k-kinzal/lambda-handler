@@ -11,15 +11,17 @@ describe('Lambda context object:', function() {
       require('./helpers/lambda')(fnString, function(payload) {
         eval(fnString);
         callback(context._payload, payload);
+
         done();
+
       });
-      delete(require.cache[path.resolve('./helpers/lambda.js')]);
     });
   };
   var context;
   beforeEach(function() {
     context = require('../src/context');
-    context.enableLog = true;
+    context._payload = '';
+    context.enableLog = false;
     delete(require.cache[path.resolve('../src/context.js')]);
   });
 
